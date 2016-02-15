@@ -4,7 +4,7 @@ SWvelosity <- function(coefficients)
 {	
 	R0 <- 2.5
 	Rs <- 1.0
-	r <- 30
+	r <- 0.5
 	str_skip <- 17
 	data <- read_harm_coef(coefficients, str_skip)
 	g <- data$mat_g
@@ -22,6 +22,9 @@ SWvelosity <- function(coefficients)
 	  Br <- outer(phi, theta, rfieldcalc, r, h, g, P)
 	  write.table(Br, file = "Radial_Field.txt", append = F, col.names = F, row.names = F)
 	  write.csv(Br,file = "Radial_Field.csv", col.names = F, row.names = F)
+
+	  # Br <- rfieldcalc(phi[45], theta[135], r, h, g, P)
+	  # Br
 
 	  # Bth <- outer(phi, theta, thfieldcalc, r, h, g, P)
 	  # write.table(Bth, file = "Latitude_Field.txt", append = F, col.names = F, row.names = F)
